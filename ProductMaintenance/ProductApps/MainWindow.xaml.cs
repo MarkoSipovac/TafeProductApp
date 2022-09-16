@@ -33,6 +33,7 @@ namespace ProductApps
             {
                 decimal totalCharge;
                 decimal wrapCharge;
+                decimal gstTotal;
                 cProduct = new Product(Convert.ToDecimal(priceTextBox.Text), Convert.ToInt16(quantityTextBox.Text));
                 cProduct.calTotalPayment();
                 totalPaymentTextBlock.Text = Convert.ToString(cProduct.TotalPayment);
@@ -40,6 +41,8 @@ namespace ProductApps
                 totalChargeTextBox.Text = totalCharge.ToString();
                 wrapCharge = totalCharge + 5.0m;
                 wrapChargeTextBlock.Text = wrapCharge.ToString();
+                gstTotal = wrapCharge * 1.1m;
+                gstTextBlock.Text = gstTotal.ToString();
             }
             catch (FormatException)
             {
@@ -55,6 +58,7 @@ namespace ProductApps
             totalPaymentTextBlock.Text = "";
             totalChargeTextBox.Text = "";
             wrapChargeTextBlock.Text = "";
+            gstTextBlock.Text = "";
         }
 
         private void closeButton_Click(object sender, RoutedEventArgs e)
